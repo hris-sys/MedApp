@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MedAppDataAccess.Models
+﻿namespace MedAppDataAccess.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class Prescription
     {
         public Prescription()
         {
-            this.Medicines = new HashSet<Medicine>();
+            this.PrescriptionMedicines = new HashSet<PrescriptionMedicines>();
         }
         public int Id { get; set; }
 
@@ -19,7 +20,7 @@ namespace MedAppDataAccess.Models
 
         public string Description { get; set; }
 
-        public ICollection<Medicine> Medicines { get; set; }
+        public ICollection<PrescriptionMedicines> PrescriptionMedicines { get; set; }
 
         public DateTime DatePrescribed { get; set; }
         public DateTime DateExpired { get; set; }

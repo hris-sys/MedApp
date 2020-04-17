@@ -3,18 +3,17 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Role
+    public class ActiveIngredient
     {
-        public Role()
+        public ActiveIngredient()
         {
-            this.UserRoles = new HashSet<UserRoles>();
+            this.MedicineActiveIngredients = new HashSet<MedicineActiveIngredient>();
         }
-
         public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }
 
-        public ICollection<UserRoles> UserRoles { get; set; }
+        public ICollection<MedicineActiveIngredient> MedicineActiveIngredients { get; set; }
     }
 }

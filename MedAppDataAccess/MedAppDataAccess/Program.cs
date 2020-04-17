@@ -6,7 +6,9 @@ namespace MedAppDataAccess
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var data = new MedDbContext();
+            data.Database.EnsureDeleted();
+            data.Database.EnsureCreated();
         }
     }
 }

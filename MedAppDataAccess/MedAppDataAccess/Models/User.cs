@@ -6,7 +6,9 @@ namespace MedAppDataAccess.Models
     {
         public User()
         {
-            this.Presciptions = new HashSet<Prescription>();
+            this.UserRoles = new HashSet<UserRoles>();
+
+            this.Prescriptions = new HashSet<Prescription>();
         }
 
         public int Id { get; set; }
@@ -20,16 +22,14 @@ namespace MedAppDataAccess.Models
         public bool Gender { get; set; }
 
         public int CityId { get; set; }
-
         public City City { get; set; }
 
         public string Email { get; set; }
 
         public string Password { get; set; }
 
-        public int RoleId { get; set; }
-        public Role Role { get; set; }
+        public ICollection<Prescription> Prescriptions { get; set; }
 
-        public ICollection<Prescription> Presciptions { get; set; }
+        public ICollection<UserRoles> UserRoles { get; set; }
     }
 }
