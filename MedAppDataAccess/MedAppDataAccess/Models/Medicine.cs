@@ -22,7 +22,6 @@
         [MaxLength(250)]
         public string Description { get; set; }
 
-        
         public ICollection<MedicineActiveIngredient> MedicineActiveIngredients { get; set; }
 
         public ICollection<PrescriptionMedicines> PrescriptionMedicines { get; set; }

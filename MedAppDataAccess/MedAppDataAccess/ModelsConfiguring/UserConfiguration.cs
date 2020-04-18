@@ -11,7 +11,6 @@
         public void Configure(EntityTypeBuilder<User> entity)
         {
             entity.HasKey(k => k.Id);
-
         }
     }
 }
