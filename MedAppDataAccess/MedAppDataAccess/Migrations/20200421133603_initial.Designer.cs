@@ -4,14 +4,16 @@ using MedAppDataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MedAppDataAccess.Migrations
 {
     [DbContext(typeof(MedDbContext))]
-    partial class MedDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200421133603_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -233,21 +235,6 @@ namespace MedAppDataAccess.Migrations
                     b.ToTable("Patients");
                 });
 
-            modelBuilder.Entity("MedAppDataAccess.Models.PatientPrescription", b =>
-                {
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PrescriptionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PatientId", "PrescriptionId");
-
-                    b.HasIndex("PrescriptionId");
-
-                    b.ToTable("PatientsPrescriptions");
-                });
-
             modelBuilder.Entity("MedAppDataAccess.Models.Prescription", b =>
                 {
                     b.Property<int>("Id")
@@ -307,7 +294,7 @@ namespace MedAppDataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -390,21 +377,6 @@ namespace MedAppDataAccess.Migrations
                     b.HasOne("MedAppDataAccess.Models.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId");
-                });
-
-            modelBuilder.Entity("MedAppDataAccess.Models.PatientPrescription", b =>
-                {
-                    b.HasOne("MedAppDataAccess.Models.Patient", "Patient")
-                        .WithMany("Prescriptions")
-                        .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("MedAppDataAccess.Models.Prescription", "Prescription")
-                        .WithMany("Patients")
-                        .HasForeignKey("PrescriptionId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("MedAppDataAccess.Models.PrescriptionMedicines", b =>

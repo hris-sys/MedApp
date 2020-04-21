@@ -1,14 +1,13 @@
-﻿namespace MedAppDataAccess.Models
-{
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
+namespace MedAppDataAccess.Models
+{
     public class Medicine
     {
         public Medicine()
         {
-            this.MedicineActiveIngredients = new HashSet<MedicineActiveIngredient>();
+            this.ActiveIngredients = new HashSet<MedicineActiveIngredient>();
 
             this.PrescriptionMedicines = new HashSet<PrescriptionMedicines>();
         }
@@ -22,7 +21,7 @@
         [MaxLength(250)]
         public string Description { get; set; }
 
-        public ICollection<MedicineActiveIngredient> MedicineActiveIngredients { get; set; }
+        public ICollection<MedicineActiveIngredient> ActiveIngredients { get; set; }
 
         public ICollection<PrescriptionMedicines> PrescriptionMedicines { get; set; }
     }

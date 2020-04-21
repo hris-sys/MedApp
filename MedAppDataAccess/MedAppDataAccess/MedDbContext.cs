@@ -21,9 +21,17 @@
 
         public DbSet<Role> Roles { get; set; }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Patient> Patients { get; set; }
 
-        public DbSet<UserRoles> UsersRoles { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
+
+        public DbSet<Appointment> Appointments { get; set; }
+
+        public DbSet<DoctorPatient> DoctorsPatients { get; set; }
+
+        public DbSet<Specialty> Specialties { get; set; }
+
+        public DbSet<PatientPrescription> PatientsPrescriptions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

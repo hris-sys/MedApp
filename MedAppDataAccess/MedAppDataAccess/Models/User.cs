@@ -1,36 +1,40 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedAppDataAccess.Models
 {
-    public class User
+    [NotMapped]
+    public abstract class User
     {
-        public User()
-        {
-            this.UserRoles = new HashSet<UserRoles>();
+        [Key]
+        public abstract int Id { get; set; }
 
-            this.Prescriptions = new HashSet<Prescription>();
-        }
-
-        public int Id { get; set; }
-
+        [Required]
         public string FirstName { get; set; }
 
+        [Required]
         public string LastName { get; set; }
 
+        [Required]
         public int Age { get; set; }
 
+        [Required]
         public bool Gender { get; set; }
 
+        [Required]
         public int CityId { get; set; }
 
         public City City { get; set; }
 
+        [Required]
+        public int UserRoleId { get; set; }
+
+        public Role Role { get; set; }
+
+        [Required]
         public string Email { get; set; }
 
+        [Required]
         public string Password { get; set; }
-
-        public ICollection<Prescription> Prescriptions { get; set; }
-
-        public ICollection<UserRoles> UserRoles { get; set; }
     }
 }

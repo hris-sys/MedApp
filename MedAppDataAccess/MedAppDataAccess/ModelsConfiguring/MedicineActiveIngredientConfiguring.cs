@@ -13,13 +13,13 @@
 
             entity
                 .HasOne(mai => mai.Medicine)
-                .WithMany(m => m.MedicineActiveIngredients)
+                .WithMany(m => m.ActiveIngredients)
                 .HasForeignKey(m => m.MedicineId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             entity
                 .HasOne(mai => mai.ActiveIngredient)
-                .WithMany(ai => ai.MedicineActiveIngredients)
+                .WithMany(ai => ai.Medicines)
                 .HasForeignKey(ai => ai.ActiveIngredientId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
