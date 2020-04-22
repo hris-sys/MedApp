@@ -17,9 +17,6 @@ namespace MedAppDataAccess.Models
             this.Prescriptions = new HashSet<PatientPrescription>();
         }
 
-        [Column("PatientId")]
-        public override int Id { get; set; }
-
         public IEnumerable<DoctorPatient> Doctors { get; set; }
 
         public IEnumerable<Appointment> Appointments { get; set; }

@@ -12,8 +12,6 @@ namespace MedAppDataAccess.Models
             this.Appointments = new HashSet<Appointment>();
         }
 
-        public override int Id { get; set; }
-
         public string Description { get; set; }
 
         public int SpecialtyId { get; set; }

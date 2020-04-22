@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MedAppDataAccess.Models
 {
     [NotMapped]
-    public abstract class User
+    public class User
     {
         [Key]
-        public abstract int Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string FirstName { get; set; }

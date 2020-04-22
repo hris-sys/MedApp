@@ -22,9 +22,9 @@ namespace MedAppDataAccess.ModelsConfiguring
                   .OnDelete(DeleteBehavior.Restrict);
 
             entity.HasMany(p => p.Prescriptions)
-                .WithOne(pr => pr.Patient)
-                .HasForeignKey(p => p.PatientId)
-                .OnDelete(DeleteBehavior.Restrict);
+                  .WithOne(pr => pr.Patient)
+                  .HasForeignKey(p => p.PatientId)
+                  .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
