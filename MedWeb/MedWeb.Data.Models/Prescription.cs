@@ -1,4 +1,4 @@
-﻿namespace MedWeb.Models
+﻿namespace MedWeb.Data.Models
 {
     using System;
     using System.Collections.Generic;

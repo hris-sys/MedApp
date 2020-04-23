@@ -1,8 +1,8 @@
-﻿namespace MedWeb.Models
+﻿namespace MedWeb.Data.Models
 {
     public class PatientPrescription
     {
-        public int PatientId { get; set; }
+        public string PatientId { get; set; }
 
         public Patient Patient { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MedWeb.Models
+namespace MedWeb.Data.Models
 {
     public class Patient : ApplicationUser
     {

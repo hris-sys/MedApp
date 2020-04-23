@@ -1,14 +1,14 @@
-﻿namespace MedWeb.Models
+﻿namespace MedWeb.Data.Models
 {
     using System;
 
     public class Appointment
     {
-        public int DoctorId { get; set; }
+        public string DoctorId { get; set; }
 
         public Doctor Doctor { get; set; }
 
-        public int PatientId { get; set; }
+        public string PatientId { get; set; }
 
         public Patient Patient { get; set; }
 

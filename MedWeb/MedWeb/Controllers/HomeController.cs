@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using MedWeb.Models;
 using Microsoft.AspNetCore.Identity;
 using MedWeb.Data;
+using MedWeb.Data.Models;
 
 namespace MedWeb.Controllers
 {
@@ -35,7 +32,7 @@ namespace MedWeb.Controllers
             return this.View();
         }
 
-        public async Task<IActionResult> Privacy()
+        public IActionResult Privacy()
         {
             //await this.roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
 

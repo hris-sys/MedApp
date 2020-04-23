@@ -1,4 +1,4 @@
-﻿using MedWeb.Models;
+﻿using MedWeb.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -26,5 +26,6 @@ namespace MedWeb.Data.ModelsConfiguration
                 .HasForeignKey(pm => pm.MedicineId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
+
     }
 }

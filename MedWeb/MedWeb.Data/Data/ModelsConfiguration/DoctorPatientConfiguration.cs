@@ -1,4 +1,4 @@
-﻿using MedWeb.Models;
+﻿using MedWeb.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
