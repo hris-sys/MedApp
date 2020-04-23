@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MedWeb.Models;
 using Microsoft.AspNetCore.Identity;
+using MedWeb.Data;
 
 namespace MedWeb.Controllers
 {
@@ -14,31 +15,43 @@ namespace MedWeb.Controllers
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
-        private readonly RoleManager<ApplicationUser> roleManager;
+        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly ApplicationDbContext context;
 
         public HomeController(UserManager<ApplicationUser> userManager, 
                               SignInManager<ApplicationUser> signInManager, 
-                              RoleManager<ApplicationUser> roleManager)
+                              RoleManager<IdentityRole> roleManager,
+                              ApplicationDbContext context)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.roleManager = roleManager;
+            this.context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var user = await this.userManager.CreateAsync(new ApplicationUser
-            {
-                UserName = "testUser",
-                Email = "testUser@abv.bg",
-                PhoneNumber = "0157832648"
-            }, "somePassword123!");
 
-            return this.Json(user);
+            return this.View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Privacy()
         {
+            //await this.roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
+
+            //await this.roleManager.CreateAsync(new IdentityRole { Name = "Patient" });
+
+            //var user = new ApplicationUser()
+            //{
+            //    FirstName = "test",
+            //    LastName = "tester",
+            //    Email = "test@tester.bg",
+            //    UserName = "testTest",
+            //};
+
+            //await this.userManager.CreateAsync(user, "somePassword123!");
+            //await this.userManager.AddToRoleAsync(user, "Admin");
+
             return View();
         }
 

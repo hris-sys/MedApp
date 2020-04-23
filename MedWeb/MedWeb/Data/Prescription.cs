@@ -22,6 +22,6 @@
 
         public DateTime DatePrescribed { get; set; }
 
-        public DateTime DateExpired { get; set; }
+        public DateTime? DateExpired { get; set; }
     }
 }

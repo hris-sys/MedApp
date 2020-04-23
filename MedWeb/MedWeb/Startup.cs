@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MedWeb.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace MedWeb
 {
@@ -30,13 +31,11 @@ namespace MedWeb
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection"),
-                    x => x.MigrationsAssembly("MedWeb")));
+                    Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<ApplicationUser>();
-
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                    .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<ApplicationUser>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllersWithViews();
 
@@ -68,8 +67,13 @@ namespace MedWeb
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                       name: "area",
+                       pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                       );
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                
                 endpoints.MapRazorPages();
             });
         }
