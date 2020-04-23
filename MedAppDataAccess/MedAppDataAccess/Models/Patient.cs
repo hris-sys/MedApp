@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace MedAppDataAccess.Models
+﻿namespace MedAppDataAccess.Models
 {
+    using System.Collections.Generic;
+
     public class Patient : User
     {
         public Patient()
@@ -22,6 +18,5 @@ namespace MedAppDataAccess.Models
         public IEnumerable<Appointment> Appointments { get; set; }
 
         public IEnumerable<PatientPrescription> Prescriptions { get; set; }
-
     }
 }

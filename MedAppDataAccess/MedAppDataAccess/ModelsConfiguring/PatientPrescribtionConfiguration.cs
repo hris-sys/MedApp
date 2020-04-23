@@ -1,13 +1,10 @@
-﻿using MedAppDataAccess.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MedAppDataAccess.ModelsConfiguring
+﻿namespace MedAppDataAccess.ModelsConfiguring
 {
-    class PatientPrescribtionConfiguration : IEntityTypeConfiguration<PatientPrescription>
+    using MedAppDataAccess.Models;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+    public class PatientPrescribtionConfiguration : IEntityTypeConfiguration<PatientPrescription>
     {
         public void Configure(EntityTypeBuilder<PatientPrescription> entity)
         {

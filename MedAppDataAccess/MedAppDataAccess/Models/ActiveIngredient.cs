@@ -9,6 +9,7 @@
         {
             this.Medicines = new HashSet<MedicineActiveIngredient>();
         }
+
         public int Id { get; set; }
 
         [Required]

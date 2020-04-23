@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace MedAppDataAccess.Models
+﻿namespace MedAppDataAccess.Models
 {
+    using System;
+
     public class Appointment
     {
         public int DoctorId { get; set; }

@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace MedAppDataAccess.Migrations
+﻿namespace MedAppDataAccess.Migrations
 {
+    using System;
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

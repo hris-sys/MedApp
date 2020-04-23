@@ -1,12 +1,9 @@
-﻿using MedAppDataAccess.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MedAppDataAccess.ModelsConfiguring
+﻿namespace MedAppDataAccess.ModelsConfiguring
 {
+    using MedAppDataAccess.Models;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
     public class PatientConfiguration : IEntityTypeConfiguration<Patient>
     {
         public void Configure(EntityTypeBuilder<Patient> entity)

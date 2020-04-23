@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace MedAppDataAccess.Models
+﻿namespace MedAppDataAccess.Models
 {
+    using System.Collections.Generic;
+
     public class Doctor : User
     {
         public Doctor()

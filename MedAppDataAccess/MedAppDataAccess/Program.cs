@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace MedAppDataAccess
+﻿namespace MedAppDataAccess
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-
         }
     }
 }
