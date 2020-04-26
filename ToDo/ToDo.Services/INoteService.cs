@@ -14,6 +14,6 @@ namespace ToDo.Services
 
         public Category GetById(int id);
 
-        public IEnumerable<T> GetAll<T>();
+        public IEnumerable<T> GetAllNotes<T>();
     }
 }

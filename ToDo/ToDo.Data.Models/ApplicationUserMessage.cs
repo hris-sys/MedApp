@@ -13,5 +13,7 @@ namespace ToDo.Data.Models
         public string MessageId { get; set; }
 
         public Message Message { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

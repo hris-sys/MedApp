@@ -58,7 +58,7 @@ namespace ToDo.Services
             return false;
         }
 
-        public IEnumerable<T> GetAll<T>()
+        public IEnumerable<T> GetAllNotes<T>()
         {
             var notes = this.DbContext.Notes
                                       .Include(n => n.Category)

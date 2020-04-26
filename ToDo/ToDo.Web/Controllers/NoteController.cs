@@ -29,7 +29,7 @@ namespace ToDo.Web.Controllers
 
         public IActionResult Index()
         {
-            var notes = this.noteService.GetAll<NoteViewModel>();
+            var notes = this.noteService.GetAllNotes<NoteViewModel>();
 
             return this.View(notes);
         }

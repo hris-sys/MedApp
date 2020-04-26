@@ -96,6 +96,7 @@ namespace ToDo.Web
         {
             services.AddTransient<INoteService, NoteService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IMessageService, MessageService>();
         }
     }
 }
