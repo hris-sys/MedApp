@@ -1,0 +1,12 @@
+﻿@model IEnumerable<NoteViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@foreach (var item in Model)
+{
+    <div class="">Title: @item.Title</div>
+    <div class="">Description: @item.Description</div>
+    <div class="">Category name: @item.CategoryName</div>
+    <div class="">Created on: @item.CreatedOn</div>
+}

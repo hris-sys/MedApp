@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="NoteService.cs~RF347ce381.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ToDo.Data.Models\ToDo.Data.Models.csproj" />
+    <ProjectReference Include="..\ToDo.Data\ToDo.Data.csproj" />
+    <ProjectReference Include="..\ToDo.Web.ViewModels\ToDo.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>
