@@ -15,6 +15,6 @@ namespace ToDo.Services
 
         public Message GetMessageById(string messageId);
 
-        public Task<IEnumerable<T>> GetAllMessagesAsync<T>(string id);
+        public Task<IEnumerable<MessageViewModel>> GetAllMessagesAsync(string id);
     }
 }

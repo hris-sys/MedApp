@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ToDo.Web.ViewModels.Messages.MessageViewModel>
+
+@{
+    ViewData["Title"] = "All messages";
+}
+
+@foreach (var item in Model)
+{
+    <div class="">Title: @item.Title</div>
+    <div class="">Description: @item.Content</div>
+    <div class="">Sent from: @item.Username</div>
+    <div >Sent at: @item.CreatedOn</div>
+    <br />
+}

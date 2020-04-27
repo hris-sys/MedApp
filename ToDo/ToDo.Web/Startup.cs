@@ -86,6 +86,9 @@ namespace ToDo.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "area",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
@@ -97,6 +100,8 @@ namespace ToDo.Web
             services.AddTransient<INoteService, NoteService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IMessageService, MessageService>();
+            services.AddTransient<ICityService, CityService>();
+            services.AddTransient<IUserService, UserService>();
         }
     }
 }

@@ -19,6 +19,8 @@ namespace ToDo.Data.Models
 
         public string Content { get; set; }
 
+        public DateTime CreatedOn { get; set; }
+
         public ICollection<ApplicationUserMessage> ApplicationUserMessages { get; set; }
     }
 }

@@ -11,5 +11,9 @@ namespace ToDo.Web.ViewModels.Messages
         [Required]
         [MinLength(10), MaxLength(5000)]
         public string Content { get; set; }
+
+        [Required]
+        [Display(Name = "Recipient")]
+        public string ReceiverUserId { get; set; }
     }
 }

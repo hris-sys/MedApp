@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using ToDo.Data.Models;
+using ToDo.Services;
 
 namespace ToDo.Web.Areas.Identity.Pages.Account
 {
@@ -17,14 +18,17 @@ namespace ToDo.Web.Areas.Identity.Pages.Account
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ICityService cityService;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            ICityService cityService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            this.cityService = cityService;
         }
 
         [BindProperty]
@@ -64,7 +68,7 @@ namespace ToDo.Web.Areas.Identity.Pages.Account
 
             [Required]
             [Display(Name = "Gender")]
-            public Gender Gender { get; set; }
+            public Gender GenderId { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -80,8 +84,7 @@ namespace ToDo.Web.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            //Fix the view
-            this.ViewData["Categories"];
+            this.ViewData["Cities"] = cityService.GetAllCities();
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
@@ -100,7 +103,7 @@ namespace ToDo.Web.Areas.Identity.Pages.Account
                     Age = Input.Age,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
-                    Gender = Input.Gender,
+                    Gender = Input.GenderId,
                     CityId = Input.CityId
                 };
 

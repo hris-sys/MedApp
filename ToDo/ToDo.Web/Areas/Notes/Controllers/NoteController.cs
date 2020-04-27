@@ -10,16 +10,17 @@ using ToDo.Services;
 using ToDo.Web.ViewModels.Categories;
 using ToDo.Web.ViewModels.Notes;
 
-namespace ToDo.Web.Controllers
+namespace ToDo.Web.Areas.Notes.Controllers
 {
     [Authorize]
+    [Area("Notes")]
     public class NoteController : Controller
     {
         private readonly INoteService noteService;
         private readonly ICategoryService categoryService;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public NoteController(INoteService noteService, ICategoryService categoryService, 
+        public NoteController(INoteService noteService, ICategoryService categoryService,
             UserManager<ApplicationUser> userManager)
         {
             this.noteService = noteService;
@@ -29,33 +30,33 @@ namespace ToDo.Web.Controllers
 
         public IActionResult Index()
         {
-            var notes = this.noteService.GetAllNotes<NoteViewModel>();
+            var notes = noteService.GetAllNotes<NoteViewModel>();
 
-            return this.View(notes);
+            return View(notes);
         }
 
         public async Task<IActionResult> Create()
         {
             var categories = await categoryService.GetAllAsync<CategoryInputModel>();
 
-            this.ViewBag.Categories = categories;
+            ViewBag.Categories = categories;
 
-            return this.View();
+            return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateNoteInputModel noteInputModel)
         {
-            if (!this.ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return this.View(noteInputModel);
+                return View(noteInputModel);
             }
 
 
-            await noteService.CreateAsync(noteInputModel.CategoryId, 
+            await noteService.CreateAsync(noteInputModel.CategoryId,
                 noteInputModel.Title,
                 noteInputModel.ExpiredOn,
-                this.userManager.GetUserId(this.User),
+                userManager.GetUserId(User),
                 noteInputModel.Description
                 );
 

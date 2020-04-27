@@ -42,6 +42,7 @@ namespace ToDo.Services
             {
                 Title = title,
                 Content = content,
+                CreatedOn = DateTime.UtcNow,
             };
 
             await this.DbContext.Messages.AddAsync(message);
@@ -65,20 +66,20 @@ namespace ToDo.Services
             return true;
         }
 
-        public async Task<IEnumerable<T>> GetAllMessagesAsync<T>(string id)
+        public async Task<IEnumerable<MessageViewModel>> GetAllMessagesAsync(string id)
         {
-            var messages = await this.DbContext.ApplicationUsersMessages
-                .Where(u => u.ApplicationUserId == id)
-                .Select(m => new Message
+            var messages = await this.DbContext.Messages
+                .Where(u => u.ApplicationUserMessages.Any(m => m.ApplicationUserId == id))
+                .Select(message => new MessageViewModel
                 {
-                    Title = m.Message.Title,
-                    Content = m.Message.Content,
+                    Content = message.Content,
+                    CreatedOn = message.CreatedOn,
+                    Title = message.Title,
+                    Username = message.ApplicationUserMessages.FirstOrDefault(um => um.MessageId == message.Id).ApplicationUser.UserName
                 })
                 .ToArrayAsync();
 
-            var mappedMessages = this.Mapper.Map<IEnumerable<T>>(messages);
-
-            return mappedMessages;
+            return messages;
         }
 
         public Message GetMessageById(string messageId)
