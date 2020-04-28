@@ -15,9 +15,9 @@ namespace ToDo.Services
         {
         }
 
-        public IEnumerable<UserViewModel> GetAllUsernames()
+        public IEnumerable<UserViewModel> GetAllUsernames(string userId)
         {
-            var users = this.DbContext.Users.ToList();
+            var users = this.DbContext.Users.Where(u => u.Id != userId).ToList();
 
             var mappedUsers = this.Mapper.Map<IEnumerable<UserViewModel>>(users);
 

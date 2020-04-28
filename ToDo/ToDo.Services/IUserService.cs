@@ -7,6 +7,6 @@ namespace ToDo.Services
 {
     public interface IUserService
     {
-        public IEnumerable<UserViewModel> GetAllUsernames();
+        public IEnumerable<UserViewModel> GetAllUsernames(string userId);
     }
 }

@@ -12,11 +12,7 @@ namespace ToDo.Web.ViewModels.Messages
         public MessagesProfile()
         {
             CreateMap<Message, MessageInputModel>();
-            CreateMap<Message, MessageViewModel>()
-                .ForMember(mv => mv.Username, options => 
-                options.MapFrom(m => m.ApplicationUserMessages
-                    .FirstOrDefault(x => x.MessageId == m.Id)
-                    .ApplicationUser.UserName)).ReverseMap();
+            CreateMap<Message, MessageViewModel>();
         }
     }
 }

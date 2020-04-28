@@ -8,8 +8,6 @@ namespace ToDo.Data.Models
     {
         public Message()
         {
-            this.ApplicationUserMessages = new HashSet<ApplicationUserMessage>();
-
             this.Id = Guid.NewGuid().ToString();
         }
 
@@ -21,6 +19,14 @@ namespace ToDo.Data.Models
 
         public DateTime CreatedOn { get; set; }
 
-        public ICollection<ApplicationUserMessage> ApplicationUserMessages { get; set; }
+        public string SenderId { get; set; }
+
+        public ApplicationUser Sender { get; set; }
+
+        public string RecipientId { get; set; }
+
+        public ApplicationUser Recipient { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

@@ -23,12 +23,6 @@ namespace ToDo.Data
 
         public DbSet<Message> Messages { get; set; }
 
-        public DbSet<ApplicationUserMessage> ApplicationUsersMessages { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

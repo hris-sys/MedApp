@@ -9,7 +9,7 @@ namespace ToDo.Services
 {
     public interface IMessageService
     {
-        public Task<bool> CreateMessageAsync(string title, string content, string userId);
+        public Task<bool> CreateMessageAsync(string title, string content, string recipientId, string senderId);
 
         public Task<bool> DeleteMessageAsync(string messageId);
 

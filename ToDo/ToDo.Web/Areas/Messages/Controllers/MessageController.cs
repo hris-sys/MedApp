@@ -35,14 +35,14 @@ namespace ToDo.Web.Areas.Messages.Controllers
             return View(messages);
         }
 
-        public IActionResult Index()
+        public IActionResult Create()
         {
-            this.ViewData["Users"] = userService.GetAllUsernames();
+            this.ViewData["Users"] = userService.GetAllUsernames(userManager.GetUserId(this.User));
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(MessageInputModel messageInputModel)
+        public async Task<IActionResult> Create(MessageInputModel messageInputModel)
         {
             if (!ModelState.IsValid)
             {
@@ -52,10 +52,18 @@ namespace ToDo.Web.Areas.Messages.Controllers
             await messageService.CreateMessageAsync(
                 messageInputModel.Title,
                 messageInputModel.Content,
-                messageInputModel.ReceiverUserId
+                messageInputModel.ReceiverUserId,
+                userManager.GetUserId(this.User)
                 );
 
             return Redirect("/");
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            await this.messageService.DeleteMessageAsync(id);
+
+            return RedirectToAction("GetAllMessages");
         }
     }
 }

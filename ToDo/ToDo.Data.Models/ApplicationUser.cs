@@ -23,7 +23,9 @@ namespace ToDo.Data.Models
         {
             this.Notes = new HashSet<Note>();
 
-            this.ApplicationUserMessages = new HashSet<ApplicationUserMessage>();
+            this.SentMessages = new HashSet<Message>();
+
+            this.ReceivedMessages = new HashSet<Message>();
         }
 
         public int Age { get; set; }
@@ -40,6 +42,8 @@ namespace ToDo.Data.Models
 
         public ICollection<Note> Notes { get; set; }
 
-        public ICollection<ApplicationUserMessage> ApplicationUserMessages { get; set; }
+        public ICollection<Message> SentMessages { get; set; }
+
+        public ICollection<Message> ReceivedMessages { get; set; }
     }
 }
