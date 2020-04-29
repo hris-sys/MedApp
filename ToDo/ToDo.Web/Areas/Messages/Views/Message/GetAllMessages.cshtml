@@ -3,10 +3,10 @@
     ViewData["Title"] = "All messages";
 }
 
-<a class="btn btn-outline-primary" asp-area="Messages" asp-controller="Message" asp-action="Create">Create</a>
+<a class="btn btn-primary" asp-area="Messages" asp-controller="Message" asp-action="Create">Create</a>
 <br />
 
-<div class="border d-flex flex-wrap justify-content-between p-3">
+<div class="border d-flex flex-wrap justify-content-between p-3 mt-3">
     @foreach (var item in Model)
     {
 

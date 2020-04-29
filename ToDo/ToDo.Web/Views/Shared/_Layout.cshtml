@@ -3,23 +3,27 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ToDo.Web</title>
+    <title>@ViewData["Title"]</title>
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link href="~/lib/fontawesome/css/all.css" rel="stylesheet" asp-append-version="true" />
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital@1&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.min.css" />
         <link href="~/lib/fontawesome/css/all.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital@1&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </environment>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark text-white bg-dark border-bottom box-shadow mb-3">
             <div class="container text-white">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ToDo.Web</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -27,9 +31,6 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
                         @if (this.User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
@@ -52,7 +53,11 @@
 
     <footer class="border-top bg-dark text-white footer">
         <div class="container">
-            &copy; 2020 - ToDo.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 ToDoApp was created by Hristiyan Dimitrov
+            <a class="float-right ml-4" href="https://www.linkedin.com/in/hristiyan-dimitrov-a044801a3/"><img src="~/img/linkedInLogo.png" width="30" height="30" alt="Image not found" class="rounded"></a>
+            <a class="float-right ml-4" href="https://github.com/hris-sys"><img src="~/img/gitHubLogo.png" width="30" height="30" alt="Image not found" class="rounded-circle"></a>
+            <a class="float-right ml-4" href="https://www.facebook.com/profile.php?id=100001836391069"><img src="~/img/facebookLogo.png" width="30" height="30" alt="Image not found" class="rounded"></a>
+            <span class="float-right">You can find me here:</span>
         </div>
     </footer>
     <environment names="Development">

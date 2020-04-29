@@ -9,17 +9,19 @@ namespace ToDo.Web.ViewModels.Notes
     {
         [Required]
         [MinLength(3), MaxLength(50)]
+        [Display(Name = "Title:")]
         public string Title { get; set; }
 
         [Required]
         [MinLength(5), MaxLength(350)]
+        [Display(Name = "Description:")]
         public string Description { get; set; }
 
         [Display(Name = "Expires on:")]
         public DateTime ExpiredOn { get; set; }
 
         [Required]
-        [Display(Name = "Category name")]
+        [Display(Name = "Category name:")]
         public int CategoryId { get; set; }
 
         [Required]

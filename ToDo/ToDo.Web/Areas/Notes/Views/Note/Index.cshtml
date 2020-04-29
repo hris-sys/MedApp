@@ -2,7 +2,9 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<div>
+    <a class="btn btn-primary" asp-action="Create">Create a new note</a>
+</div>
 @foreach (var item in Model)
 {
     <div class="">Title: @item.Title</div>
@@ -10,3 +12,4 @@
     <div class="">Category name: @item.CategoryName</div>
     <div class="">Created on: @item.CreatedOn</div>
 }
+

@@ -4,66 +4,68 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
-
+<h4>Create a new account.</h4>
+<hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="position-absolute">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            <div class="float-left mr-5">
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.FirstName"></label>
+                    <input asp-for="Input.FirstName" class="form-control" />
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.LastName"></label>
+                    <input asp-for="Input.LastName" class="form-control" />
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Input.FirstName"></label>
-                <input asp-for="Input.FirstName" class="form-control" />
-                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            <div class="float-left ml-5 mr-5">
+                <div class="form-group">
+                    <label asp-for="Input.Age"></label>
+                    <input asp-for="Input.Age" class="form-control" />
+                    <span asp-validation-for="Input.Age" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Input.LastName"></label>
-                <input asp-for="Input.LastName" class="form-control" />
-                <span asp-validation-for="Input.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Age"></label>
-                <input asp-for="Input.Age" class="form-control" />
-                <span asp-validation-for="Input.Age" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <label asp-for="Input.CityId" class="control-label required"></label>
-            <select asp-for="Input.CityId" class="form-control">
-                @foreach (var category in this.ViewBag.Cities)
-                {
-                    <option value="@category.Id">@category.Name</option>
-                }
-            </select>
-            <br />
-            <span asp-validation-for="Input.CityId" class="text-danger"></span>
-            <div class="form-group">
-                <label asp-for="Input.GenderId" class="control-label required"></label>
-                <select value="Genders.Unique" class="form-control" asp-for="Input.GenderId" asp-items="Html.GetEnumSelectList<Gender>()">
-                    <option selected value="@Gender.Unique" hidden>@Gender.Unique</option>
+            <div class="float-left ml-5 mr-5">
+                <label asp-for="Input.CityId" class="control-label required"></label>
+                <select asp-for="Input.CityId" class="form-control">
+                    @foreach (var category in this.ViewBag.Cities)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
                 </select>
-                <span asp-validation-for="Input.GenderId" class="text-danger" />
+                <br />
+                <span asp-validation-for="Input.CityId" class="text-danger"></span>
+                <div class="form-group mr-3">
+                    <label asp-for="Input.GenderId" class="control-label required"></label>
+                    <select value="Genders.Unique" class="form-control" asp-for="Input.GenderId" asp-items="Html.GetEnumSelectList<Gender>()">
+                        <option selected value="@Gender.Unique" hidden>@Gender.Unique</option>
+                    </select>
+                    <span asp-validation-for="Input.GenderId" class="text-danger" />
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary ml-4">Register</button>
             </div>
-            <br />
-            <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
 </div>
-
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
