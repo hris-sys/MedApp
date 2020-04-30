@@ -26,13 +26,29 @@ namespace ToDo.Web.Areas.Messages.Controllers
             this.userService = userService;
         }
 
-        public async Task<IActionResult> GetAllMessages()
+        public async Task<IActionResult> GetAllReceivedMessages()
         {
             string id = this.userManager.GetUserId(this.User);
 
-            var messages = await messageService.GetAllMessagesAsync(id);
+            var messages = await messageService.GetAllReceivedMessagesAsync(id);
 
             return View(messages);
+        }
+
+        public async Task<IActionResult> GetAllSentMessages()
+        {
+            string id = this.userManager.GetUserId(this.User);
+
+            var messages = await messageService.GetAllSentMessagesAsync(id);
+
+            return View(messages);
+        }
+
+        public async Task<IActionResult> GetDeletedMessages()
+        {
+            var results = await this.messageService.GetAllDeletedMessagesAsync(userManager.GetUserId(this.User));
+
+            return this.View(results);
         }
 
         public IActionResult Create()
@@ -63,7 +79,15 @@ namespace ToDo.Web.Areas.Messages.Controllers
         {
             await this.messageService.DeleteMessageAsync(id);
 
-            return RedirectToAction("GetAllMessages");
+            return RedirectToAction("GetAllReceivedMessages");
+        }
+
+
+        public async Task<IActionResult> Restore(string id)
+        {
+            await this.messageService.UndeleteMessageAsync(id);
+
+            return RedirectToAction("GetDeletedMessages");
         }
     }
 }

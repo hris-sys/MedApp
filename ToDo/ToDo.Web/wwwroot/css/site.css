@@ -102,3 +102,7 @@ body {
     border-radius: 3px;
 }
 
+.message-width {
+    width: 49% !important;
+}
+

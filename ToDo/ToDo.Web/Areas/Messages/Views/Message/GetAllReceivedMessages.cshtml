@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ToDo.Web.ViewModels.Messages.MessageViewModel>
+@{
+    ViewData["Title"] = "Received messages";
+}
+
+<a class="btn btn-success mb-3" asp-area="Messages" asp-controller="Message" asp-action="Create">Create</a>
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-primary btn-block text-white" asp-action="GetAllReceivedMessages">Inbox</a>
+        <a class="btn btn-info btn-block text-white" asp-action="GetAllSentMessages">Sent</a>
+        <a class="btn btn-secondary btn-block text-white" asp-action="GetDeletedMessages">Deleted</a>
+    </div>
+    <div class="border d-flex flex-wrap justify-content-around p-3 col-md-10">
+        @foreach (var item in Model)
+        {
+            <div class="border p-3 message-width position-relative">
+
+                <a class="position-absolute delete-icon" asp-area="Messages" asp-controller="Message" asp-action="Delete" asp-route-id="@item.Id">
+                    <i class="text-danger far fa-trash-alt"></i>
+                </a>
+
+                <div class="">Title: @item.Title</div>
+                <div class="">Description: @item.Content</div>
+                <div class="">Sent from: @item.SenderUserName</div>
+                <div>Sent at: <time datetime="@item.CreatedOn.ToString("O")"></time></div>
+            </div>
+        }
+    </div>
+</div>
