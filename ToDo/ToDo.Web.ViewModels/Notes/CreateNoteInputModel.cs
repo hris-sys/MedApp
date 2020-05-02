@@ -23,8 +23,5 @@ namespace ToDo.Web.ViewModels.Notes
         [Required]
         [Display(Name = "Category name:")]
         public int CategoryId { get; set; }
-
-        [Required]
-        public int UserId { get; set; }
     }
 }

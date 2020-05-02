@@ -14,5 +14,7 @@ namespace ToDo.Services
         protected ApplicationDbContext DbContext { get; }
 
         protected IMapper Mapper { get; }
+
+        //ToDo: GetAll, GetAllByFilter
     }
 }

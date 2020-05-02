@@ -37,7 +37,7 @@ namespace ToDo.Web.Areas.Notes.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var categories = await categoryService.GetAllAsync<CategoryInputModel>();
+            var categories = await categoryService.GetAllAsync<CategoryModel>();
 
             ViewBag.Categories = categories;
 
@@ -52,13 +52,11 @@ namespace ToDo.Web.Areas.Notes.Controllers
                 return View(noteInputModel);
             }
 
-
             await noteService.CreateAsync(noteInputModel.CategoryId,
                 noteInputModel.Title,
                 noteInputModel.ExpiredOn,
                 userManager.GetUserId(User),
-                noteInputModel.Description
-                );
+                noteInputModel.Description);
 
             return Redirect("/");
         }

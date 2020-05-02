@@ -57,8 +57,6 @@ namespace ToDo.Web
             services.AddRazorPages();
 
             this.RegisterServiceLayer(services);
-
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

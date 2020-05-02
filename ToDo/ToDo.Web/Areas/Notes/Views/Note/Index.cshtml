@@ -3,13 +3,20 @@
     ViewData["Title"] = "Index";
 }
 <div>
-    <a class="btn btn-success" asp-action="Create">Create a new note</a>
+    <a class="btn btn-success mb-3" asp-action="Create">Create a new note</a>
 </div>
-@foreach (var item in Model)
-{
-    <div class="">Title: @item.Title</div>
-    <div class="">Description: @item.Description</div>
-    <div class="">Category name: @item.CategoryName</div>
-    <div class="">Created on: @item.CreatedOn</div>
-}
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="card col-md-3" style="width: 18rem; height: 420px">
+            <img class="card-img-top custom-note-pic" src="@item.ImageUrl" alt="@item.CategoryName image not found!">
+            <div class="card-body">
+                <h5 class="card-title">@item.Title</h5>
+                <p class="card-text" style="height: 100px">@item.Description</p>
+                <div class="">Created on: @item.CreatedOn</div>
+            </div>
+        </div>
+    }
+</div>
+
 

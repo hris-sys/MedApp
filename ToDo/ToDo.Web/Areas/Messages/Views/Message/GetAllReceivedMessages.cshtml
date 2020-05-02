@@ -18,6 +18,10 @@
                 <a class="position-absolute delete-icon" asp-area="Messages" asp-controller="Message" asp-action="Delete" asp-route-id="@item.Id">
                     <i class="text-danger far fa-trash-alt"></i>
                 </a>
+                @{ 
+                    //Lookup w3 :)
+                    //ToDo: add ToString("dd:MM:yyyy, hh:mm")
+                }
 
                 <div class="">Title: @item.Title</div>
                 <div class="">Description: @item.Content</div>

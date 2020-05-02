@@ -13,8 +13,14 @@ namespace ToDo.Services
 
         public Task<bool> DeleteMessageAsync(string messageId);
 
+        public Task<bool> UndeleteMessageAsync(string messageId);
+
         public Message GetMessageById(string messageId);
 
-        public Task<IEnumerable<MessageViewModel>> GetAllMessagesAsync(string id);
+        public Task<IEnumerable<MessageViewModel>> GetAllReceivedMessagesAsync(string id);
+
+        public Task<IEnumerable<MessageViewModel>> GetAllSentMessagesAsync(string id);
+
+        public Task<IEnumerable<MessageViewModel>> GetAllDeletedMessagesAsync(string id);
     }
 }

@@ -14,5 +14,7 @@ namespace ToDo.Data.Models
         public string Name { get; set; }
 
         public ICollection<Note> Notes { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }

@@ -8,7 +8,8 @@ namespace ToDo.Web.ViewModels.Notes
         public NoteProfile()
         {
             CreateMap<Note, NoteViewModel>()
-                .ForMember(nv => nv.CategoryName, options => options.MapFrom(n => n.Category.Name));
+                .ForMember(nv => nv.CategoryName, options => options.MapFrom(n => n.Category.Name))
+                .ForMember(nv => nv.ImageUrl, options => options.MapFrom(n => n.Category.ImageUrl));
         }
     }
 }

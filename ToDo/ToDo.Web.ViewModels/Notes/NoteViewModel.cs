@@ -14,5 +14,7 @@ namespace ToDo.Web.ViewModels.Notes
         public DateTime CreatedOn { get; set; }
 
         public string CategoryName { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }

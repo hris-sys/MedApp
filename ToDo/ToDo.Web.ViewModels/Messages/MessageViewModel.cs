@@ -22,7 +22,7 @@ namespace ToDo.Web.ViewModels.Messages
         [Display(Name = "Sent on")]
         public DateTime CreatedOn { get; set; }
 
-        [Display(Name = "Deleted message")]
-        public bool IsDeleted { get; set; }
+        [Display(Name = "Deleted on")]
+        public DateTime DeletedOn { get; set; }
     }
 }

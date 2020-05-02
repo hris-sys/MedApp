@@ -10,7 +10,7 @@ namespace ToDo.Web.ViewModels.Categories
     {
         public CategoryProfile()
         {
-            CreateMap<Category, CategoryInputModel>();
+            CreateMap<Category, CategoryModel>();
         }
     }
 }

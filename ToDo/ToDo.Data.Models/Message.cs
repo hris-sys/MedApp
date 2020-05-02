@@ -28,5 +28,7 @@ namespace ToDo.Data.Models
         public ApplicationUser Recipient { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public DateTime DeletedOn { get; set; }
     }
 }

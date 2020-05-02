@@ -106,3 +106,8 @@ body {
     width: 49% !important;
 }
 
+.custom-note-pic{
+    width: auto;
+    height: 175px;
+}
+
