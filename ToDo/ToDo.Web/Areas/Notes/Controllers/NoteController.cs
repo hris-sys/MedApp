@@ -27,12 +27,27 @@ namespace ToDo.Web.Areas.Notes.Controllers
             this.categoryService = categoryService;
             this.userManager = userManager;
         }
-
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var notes = noteService.GetAllNotes<NoteViewModel>();
+            await this.noteService.ValidateMessageAsync(this.userManager.GetUserId(this.User));
 
+            var notes = noteService.GetAllNotes(this.userManager.GetUserId(this.User));
+            
             return View(notes);
+        }
+
+        public async Task<IActionResult> GetDeletedNotes()
+        {
+            var deletedNotes = await this.noteService.GetAllDeletedNotesAsync(userManager.GetUserId(this.User));
+
+            return this.View(deletedNotes);
+        }
+
+        public async Task<IActionResult> HardDelete(int id)
+        {
+            await this.noteService.DeleteAsync(id);
+
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Create()
@@ -58,7 +73,20 @@ namespace ToDo.Web.Areas.Notes.Controllers
                 userManager.GetUserId(User),
                 noteInputModel.Description);
 
-            return Redirect("/");
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            await this.noteService.SetIsDeletedAsync(id);
+
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> Restore(int id)
+        {
+            await this.noteService.RestoreMessageAsync(id);
+
+            return RedirectToAction("GetDeletedNotes");
         }
     }
 }

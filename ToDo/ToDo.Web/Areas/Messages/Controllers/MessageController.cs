@@ -51,10 +51,17 @@ namespace ToDo.Web.Areas.Messages.Controllers
             return this.View(results);
         }
 
+        public async Task<IActionResult> HardDeleteMessage(string id)
+        {
+            await this.messageService.DeleteMessageAsync(id);
+
+            return RedirectToAction("GetDeletedMessages");
+        }
+
         public IActionResult Create()
         {
             this.ViewData["Users"] = userService.GetAllUsernames(userManager.GetUserId(this.User));
-            return View();
+            return this.View();
         }
 
         [HttpPost]
@@ -72,20 +79,20 @@ namespace ToDo.Web.Areas.Messages.Controllers
                 userManager.GetUserId(this.User)
                 );
 
-            return Redirect("/");
+            return RedirectToAction("GetAllReceivedMessages");
         }
 
         public async Task<IActionResult> Delete(string id)
         {
-            await this.messageService.DeleteMessageAsync(id);
-
+            await this.messageService.SetIsDeletedAsync(id);
+            //Bug: When deleted by the sender, it gets deleted to the receiver
             return RedirectToAction("GetAllReceivedMessages");
         }
 
 
         public async Task<IActionResult> Restore(string id)
         {
-            await this.messageService.UndeleteMessageAsync(id);
+            await this.messageService.RestoreMessageAsync(id);
 
             return RedirectToAction("GetDeletedMessages");
         }

@@ -78,6 +78,32 @@ body {
     top: 1rem;
 }
 
+.delete-icon-note {
+    right: 0rem;
+    bottom: 1rem;
+}
+
+.delete-icon-message {
+    right: 1rem;
+    top: 2.5rem;
+}
+
+.hard-delete-icon{
+    right: 1rem;
+    top: 2.5rem;
+}
+
+.restore-icon-note {
+    right: 0rem;
+    bottom: 1rem;
+}
+
+.hard-delete-icon-note {
+    right: 0rem;
+    bottom: 2.5rem;
+}
+
+
 .image-index {
     width: auto;
     height: 100px;
@@ -91,11 +117,13 @@ body {
     margin-left: 3rem;
     top: 0;
 }
+
 .person-image-index {
     width: 190px;
-    height:140px;
+    height: 140px;
     border-radius: 3px;
 }
+
 .person-image-index2 {
     width: 160px;
     height: 170px;
@@ -106,8 +134,31 @@ body {
     width: 49% !important;
 }
 
-.custom-note-pic{
+.custom-note-pic {
     width: auto;
     height: 175px;
+}
+
+.messageDiv {
+    overflow-y: auto;
+    max-height: 35rem;
+}
+
+.messageDiv::-webkit-scrollbar {
+    width: 1rem;
+}
+
+.messageDiv::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+.messageDiv::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 10px;
+}
+
+.messageDiv::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.7);
 }
 

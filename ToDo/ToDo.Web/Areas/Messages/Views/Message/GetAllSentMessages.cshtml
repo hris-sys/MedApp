@@ -6,14 +6,12 @@
 <a class="btn btn-success mb-3" asp-area="Messages" asp-controller="Message" asp-action="Create">Create</a>
 <div class="row">
     <div class="col-md-2">
-        <a class="btn btn-primary btn-block text-white" asp-action="GetAllReceivedMessages">Inbox</a>
-        <a class="btn btn-info btn-block text-white" asp-action="GetAllSentMessages">Sent</a>
-        <a class="btn btn-secondary btn-block text-white" asp-action="GetDeletedMessages">Deleted</a>
+        <partial name="_MenuPartial" />
     </div>
-    <div class="border d-flex flex-wrap justify-content-around p-3 col-md-10">
+    <div class="border d-flex flex-wrap justify-content-around p-3 col-md-10 messageDiv">
         @foreach (var item in Model)
         {
-            <div class="border p-3 message-width position-relative mb-2">
+            <div class="border p-3 pr-4 message-width position-relative mb-2">
                 <a class="position-absolute delete-icon" asp-area="Messages" asp-controller="Message" asp-action="Delete" asp-route-id="@item.Id">
                     <i class="text-danger far fa-trash-alt"></i>
                 </a>
@@ -25,3 +23,7 @@
         }
     </div>
 </div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/functions/deleteMessagesAsync.js" asp-append-version="true"></script>
+}

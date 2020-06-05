@@ -7,18 +7,6 @@ namespace ToDo.Data.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        //var user = new ApplicationUser
-        //{
-        //    UserName = Input.Email,
-        //    Email = Input.Email,
-        //    EmailConfirmed = true,
-        //    Age = Input.Age,
-        //    FirstName = Input.FirstName,
-        //    LastName = Input.LastName,
-        //    Gender = Input.Gender,
-        //    CityId = Input.CityId
-        //};
-
         public ApplicationUser()
         {
             this.Notes = new HashSet<Note>();

@@ -11,9 +11,11 @@ namespace ToDo.Services
     {
         public Task<bool> CreateMessageAsync(string title, string content, string recipientId, string senderId);
 
+        public Task<bool> SetIsDeletedAsync(string messageId);
+
         public Task<bool> DeleteMessageAsync(string messageId);
 
-        public Task<bool> UndeleteMessageAsync(string messageId);
+        public Task<bool> RestoreMessageAsync(string messageId);
 
         public Message GetMessageById(string messageId);
 
@@ -22,5 +24,6 @@ namespace ToDo.Services
         public Task<IEnumerable<MessageViewModel>> GetAllSentMessagesAsync(string id);
 
         public Task<IEnumerable<MessageViewModel>> GetAllDeletedMessagesAsync(string id);
+
     }
 }

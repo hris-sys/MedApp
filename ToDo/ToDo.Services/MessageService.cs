@@ -35,8 +35,19 @@ namespace ToDo.Services
 
             return true;
         }
-
         public async Task<bool> DeleteMessageAsync(string messageId)
+        {
+            var message = await this.DbContext.Messages
+                .FirstOrDefaultAsync(m => m.Id == messageId);
+
+            this.DbContext.Messages.Remove(message);
+
+            await this.DbContext.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> SetIsDeletedAsync(string messageId)
         {
             var message = await this.DbContext.Messages
                 .FirstOrDefaultAsync(m => m.Id == messageId);
@@ -52,7 +63,7 @@ namespace ToDo.Services
             return true;
         }
 
-        public async Task<bool> UndeleteMessageAsync(string messageId)
+        public async Task<bool> RestoreMessageAsync(string messageId)
         {
             var message = await this.DbContext.Messages
                 .FirstOrDefaultAsync(m => m.Id == messageId);

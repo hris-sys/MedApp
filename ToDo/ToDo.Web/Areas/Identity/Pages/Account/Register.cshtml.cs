@@ -19,16 +19,19 @@ namespace ToDo.Web.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ICityService cityService;
+        private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ICityService cityService)
+            ICityService cityService,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             this.cityService = cityService;
+            this.roleManager = roleManager;
         }
 
         [BindProperty]
@@ -85,6 +88,8 @@ namespace ToDo.Web.Areas.Identity.Pages.Account
         public async Task OnGetAsync(string returnUrl = null)
         {
             this.ViewData["Cities"] = cityService.GetAllCities();
+            await this.roleManager.CreateAsync(new IdentityRole("User"));
+            await this.roleManager.CreateAsync(new IdentityRole("Admin"));
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
@@ -95,6 +100,7 @@ namespace ToDo.Web.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
+
                 var user = new ApplicationUser
                 {
                     UserName = Input.Email,
@@ -112,6 +118,7 @@ namespace ToDo.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    await _userManager.AddToRoleAsync(user, "User");
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)

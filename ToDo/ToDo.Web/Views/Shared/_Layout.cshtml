@@ -22,7 +22,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark text-white bg-dark border-bottom box-shadow mb-3">
-            <div class="container text-white">@*ToDo: Add Logo to Home and fix the logo*@
+            <div class="container text-white">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -38,6 +38,15 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="Messages" asp-controller="Message" asp-action="GetAllReceivedMessages">Messages</a>
+                            </li>
+                        }
+                        @if (this.User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Admin" asp-controller="Category" asp-action="All">Category editor</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Admin" asp-controller="City" asp-action="All">City editor</a>
                             </li>
                         }
                     </ul>
@@ -76,7 +85,7 @@
         <script src="~/lib/moment/min/moment-with-locales.min.js" asp-append-version="true"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-        
-        @RenderSection("Scripts", required: false)
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

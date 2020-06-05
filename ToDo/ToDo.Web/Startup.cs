@@ -48,6 +48,7 @@ namespace ToDo.Web
                 options.SignIn.RequireConfirmedEmail = false;
                 options.User.RequireUniqueEmail = true;
             })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddAutoMapper(typeof(ErrorViewModel));
@@ -69,9 +70,17 @@ namespace ToDo.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-
                 app.UseHsts();
+
+                app.Use(async (context, next) =>
+                {
+                    await next();
+                    if (context.Response.StatusCode == 404)
+                    {
+                        context.Request.Path = "/Home/Error";
+                        await next();
+                    }
+                });
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();

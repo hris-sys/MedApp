@@ -7,6 +7,8 @@ namespace ToDo.Web.ViewModels.Notes
 {
     public class NoteViewModel
     {
+        public int Id { get; set; }
+
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -16,5 +18,7 @@ namespace ToDo.Web.ViewModels.Notes
         public string CategoryName { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public DateTime ExpiredOn { get; set; }
     }
 }

@@ -14,18 +14,22 @@
             <img class="card-img-top custom-note-pic" src="@item.ImageUrl" alt="@item.CategoryName image not found!">
             <div class="card-body position-relative">
                 <h5 class="card-title">@item.Title</h5>
-                <a class="position-absolute delete-icon-note" asp-area="Notes" asp-controller="Note" asp-action="Delete" asp-route-id="@item.Id">
+                <a class="position-absolute restore-icon-note" asp-area="Notes" asp-controller="Note" asp-action="Restore" asp-route-id="@item.Id">
+                    <i class="fas fa-trash-restore text-success"></i>
+                </a>
+                <a class="position-absolute hard-delete-icon-note" asp-area="Notes" asp-controller="Note" asp-action="HardDelete" asp-route-id="@item.Id">
                     <i class="text-danger far fa-trash-alt"></i>
                 </a>
-                <p class="card-text" style="height: 5rem">@item.Description</p>
+                <p class="card-text" style="height: 4rem;">@item.Description</p>
                 <div class="">Created on: @item.CreatedOn</div>
-                <div class="">Expires on: @item.ExpiredOn.Date.ToString("d")</div>
+                <div class="">The note has expired or deleted after: @item.ExpiredOn.Date.ToString("d")</div>
             </div>
         </div>
     }
 </div>
 
 @section Scripts {
-    <script type="text/javascript" src="~/js/functions/deleteNotesFromCreate.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/functions/deleteNotesAsync.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/functions/restoreNotesAsync.js" asp-append-version="true"></script>
 }
 

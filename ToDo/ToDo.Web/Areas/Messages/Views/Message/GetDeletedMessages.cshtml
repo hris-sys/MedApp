@@ -6,16 +6,17 @@
 <a class="btn btn-success mb-3" asp-area="Messages" asp-controller="Message" asp-action="Create">Create</a>
 <div class="row">
     <div class="col-md-2">
-        <a class="btn btn-primary btn-block text-white" asp-action="GetAllReceivedMessages">Inbox</a>
-        <a class="btn btn-info btn-block text-white" asp-action="GetAllSentMessages">Sent</a>
-        <a class="btn btn-secondary btn-block text-white" asp-action="GetDeletedMessages">Deleted</a>
+        <partial name="_MenuPartial" />
     </div>
-    <div class="border d-flex flex-wrap justify-content-around p-3 col-md-10">
+    <div class="border d-flex flex-wrap justify-content-around p-3 col-md-10 messageDiv">
         @foreach (var item in Model)
         {
-            <div class="border p-3 message-width position-relative mb-2">
+            <div class="border p-3 pr-4 message-width position-relative mb-2">
                 <a class="position-absolute delete-icon" asp-area="Messages" asp-controller="Message" asp-action="Restore" asp-route-id="@item.Id">
                     <i class="fas fa-trash-restore text-success"></i>
+                </a>
+                <a class="position-absolute delete-icon delete-icon-message" asp-area="Messages" asp-controller="Message" asp-action="HardDeleteMessage" asp-route-id="@item.Id">
+                    <i class="text-danger far fa-trash-alt"></i>
                 </a>
                 <div class="">Title: @item.Title</div>
                 <div class="">Description: @item.Content</div>
@@ -27,3 +28,7 @@
         }
     </div>
 </div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/functions/deleteMessagesAsync.js" asp-append-version="true"></script>
+}

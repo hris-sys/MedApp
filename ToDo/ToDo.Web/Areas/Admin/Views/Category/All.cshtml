@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ToDo.Web.ViewModels.Categories.CategoryModel>
+
+@{
+    ViewData["Title"] = "All";
+}
+
+<h1>All</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                Operations
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        {
+                            <a href="@item.ImageUrl">@Html.DisplayFor(modelItem => item.ImageUrl)</a>
+                        }
+                        else
+                        {
+                            <span>Image url not set!</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new {id=item.Id}) |
+                        @Html.ActionLink("Delete", "Delete", new {id=item.Id})
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
