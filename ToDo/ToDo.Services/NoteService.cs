@@ -96,7 +96,7 @@ namespace ToDo.Services
         public async Task<IEnumerable<NoteViewModel>> GetAllDeletedNotesAsync(string id)
         {
             var deletedNotes = await DbContext.Notes
-                                             .Where(del => del.IsDeleted == true)
+                                             .Where(del => del.IsDeleted == true && del.ApplicationUserId == id)
                                              .Include(c => c.Category)
                                              .OrderBy(ord => ord.CreatedOn)
                                              .ThenBy(th => th.ExpiredOn)
@@ -146,13 +146,18 @@ namespace ToDo.Services
 
         public bool DeleteAllNotesByCategoryId(int id)
         {
-            var notes = this.DbContext.Notes.Where(not => not.Id == id).ToList();
+            var notes = this.DbContext.Notes.Where(not => not.CategoryId == id).ToList();
 
             this.DbContext.Notes.RemoveRange(notes);
 
             this.DbContext.SaveChanges();
 
             return true;
+        }
+
+        public string GetUserIdByNoteId(int id)
+        {
+            return this.DbContext.Notes.Where(us => us.Id == id).SingleOrDefault().ApplicationUserId;
         }
     }
 }

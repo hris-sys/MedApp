@@ -53,7 +53,12 @@ namespace ToDo.Web.Areas.Messages.Controllers
 
         public async Task<IActionResult> HardDeleteMessage(string id)
         {
-            await this.messageService.DeleteMessageAsync(id);
+            bool isDeleted = await this.messageService.DeleteMessageAsync(id);
+
+            if (!isDeleted)
+            {
+                return RedirectToAction("Error", "Home");
+            }
 
             return RedirectToAction("GetDeletedMessages");
         }
@@ -76,8 +81,7 @@ namespace ToDo.Web.Areas.Messages.Controllers
                 messageInputModel.Title,
                 messageInputModel.Content,
                 messageInputModel.ReceiverUserId,
-                userManager.GetUserId(this.User)
-                );
+                userManager.GetUserId(this.User));
 
             return RedirectToAction("GetAllReceivedMessages");
         }
@@ -85,7 +89,7 @@ namespace ToDo.Web.Areas.Messages.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             await this.messageService.SetIsDeletedAsync(id);
-            //Bug: When deleted by the sender, it gets deleted to the receiver
+            //Unintential feature: When deleted by the sender, it gets deleted to the receiver
             return RedirectToAction("GetAllReceivedMessages");
         }
 

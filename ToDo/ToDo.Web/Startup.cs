@@ -70,6 +70,8 @@ namespace ToDo.Web
             }
             else
             {
+                app.UseExceptionHandler("/Home/Error");
+
                 app.UseHsts();
 
                 app.Use(async (context, next) =>

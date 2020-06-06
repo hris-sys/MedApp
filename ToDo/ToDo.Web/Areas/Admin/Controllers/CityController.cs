@@ -46,7 +46,7 @@ namespace ToDo.Web.Areas.Admin.Controllers
         {
             if (!this.ModelState.IsValid)
             {
-                return RedirectToPage("/Home/Error");
+                return this.View(city);
             }
 
             await this.cityService.CreateAsync(city.Name);

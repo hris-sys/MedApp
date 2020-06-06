@@ -38,7 +38,7 @@ namespace ToDo.Web.Areas.Admin.Controllers
         {
             if (!this.ModelState.IsValid)
             {
-                return RedirectToPage("/Home/Error");
+                return this.View();
             }
             await categoryService.CreateAsync(category.Name, category.ImageUrl);
 

@@ -40,6 +40,11 @@ namespace ToDo.Services
             var message = await this.DbContext.Messages
                 .FirstOrDefaultAsync(m => m.Id == messageId);
 
+            if (message == null)
+            {
+                return false;
+            }
+
             this.DbContext.Messages.Remove(message);
 
             await this.DbContext.SaveChangesAsync();
