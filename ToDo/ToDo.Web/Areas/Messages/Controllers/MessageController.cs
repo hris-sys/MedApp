@@ -89,7 +89,6 @@ namespace ToDo.Web.Areas.Messages.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             await this.messageService.SetIsDeletedAsync(id);
-            //Unintential feature: When deleted by the sender, it gets deleted to the receiver
             return RedirectToAction("GetAllReceivedMessages");
         }
 
